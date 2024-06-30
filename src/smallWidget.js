@@ -1,7 +1,7 @@
 // Stripe constants
 // Attention: It is not recommended to use Stripe secret keys.
 // Instead, it is better to use Restricted keys.
-// Create a new Restricted key in the Stripe dashboard, with read-only permissions for balance, customers, and disputes.
+// Create a new Restricted key in the Stripe dashboard, with read-only permissions for balance, customers, and charges.
 const RESTRICTED_KEY = 'rk_test_51PX4JfRtTpNlld34vyfJTQ2t7Apt9HmHwRdSFQiO3WUNAQirJE3uWlOEqOxzlp4XptpAsphBSFrcdTOuU0fph3oD00i7FV3QH8';
 
 // Design constants

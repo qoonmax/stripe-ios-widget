@@ -9,4 +9,11 @@ A widget that allows you to monitor the balance and other metrics of your Stripe
 
 - Create new script in Scriptable app and paste code from [smallWidger.js](/src/smallWidget.js)
 
-- Add new widget to your home screen
+- Edit RESTRICTED_KEY to insert your key.
+
+Attention: It is not recommended to use Stripe secret keys.
+
+Instead, it is better to use Restricted keys.
+Create a new Restricted key in the Stripe dashboard, with read-only permissions for balance, customers, and charges.
+
+- Add a new widget to your home screen
