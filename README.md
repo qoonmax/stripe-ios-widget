@@ -1,5 +1,18 @@
+<div align="center">
+
 # Stripe iOS Widget
 ![Image alt](https://github.com/qoonmax/stripe-ios-widget/blob/main/img/banner.jpg)
+  <p>
+    <a
+      href="https://github.com/MrMartineau/gatsby-theme-code-notes/blob/master/LICENSE"
+    >
+      <img
+        src="https://img.shields.io/badge/license-MIT-blue.svg"
+        alt="scriptable widgets is released under the MIT license."
+      />
+    </a>
+  </p>
+</div>
 
 A widget that allows you to monitor the balance and other metrics of your Stripe account on iPhone and iPad.
 
