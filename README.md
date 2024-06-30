@@ -1,4 +1,4 @@
-<div align="center">
+<div>
 
 # Stripe iOS Widget
 ![Image alt](https://github.com/qoonmax/stripe-ios-widget/blob/main/img/banner.jpg)
