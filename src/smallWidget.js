@@ -2,7 +2,7 @@
 // Attention: It is not recommended to use Stripe secret keys.
 // Instead, it is better to use Restricted keys.
 // Create a new Restricted key in the Stripe dashboard, with read-only permissions for balance, customers, and charges.
-const RESTRICTED_KEY = 'rk_test_51PX4JfRtTpNlld34vyfJTQ2t7Apt9HmHwRdSFQiO3WUNAQirJE3uWlOEqOxzlp4XptpAsphBSFrcdTOuU0fph3oD00i7FV3QH8';
+const RESTRICTED_KEY = 'rk_test_51PX4JfRtTpNlld34V7ebXTCqDDYBkaDrLAxFMop27Ma3y9FPNDSv6K3jig5Bi2QNFSKMhT9GxQ9GGBdBRr0TNrYY00xQ8lUwe8';
 
 // Design constants
 const TITLE_FONT_SIZE = 12;
@@ -39,13 +39,13 @@ async function makeWidget() {
 function addBackgroundGradient(widget) {
     const gradient = new LinearGradient();
     gradient.colors = [new Color("#635bff"), new Color("#1c1c1e")];
-    gradient.locations = [-1,1];
+    gradient.locations = [-1, 1];
     widget.backgroundGradient = gradient;
 }
 
 function addStripeLabel(widget) {
     const stripeLabel = widget.addText("stripe");
-    stripeLabel.font = new Font("AvenirNext-Bold",14);
+    stripeLabel.font = new Font("AvenirNext-Bold", 14);
 }
 
 async function addBalanceBlock(widget) {
@@ -68,7 +68,7 @@ async function addClientsBlock(stack) {
     clientsTitle.textColor = new Color("#ADBDCC");
 
     const clientsValue = clientsStack.addText((await getCustomers()).toString());
-    clientsValue.font =  Font.boldSystemFont(VALUE_FONT_SIZE);
+    clientsValue.font = Font.boldSystemFont(VALUE_FONT_SIZE);
 }
 
 async function addRefundsBlock(stack) {
@@ -80,7 +80,7 @@ async function addRefundsBlock(stack) {
     refundsTitle.textColor = new Color("#ADBDCC");
 
     const refundsValue = refundsStack.addText((await getRefunds()).toString());
-    refundsValue.font =  Font.boldSystemFont(VALUE_FONT_SIZE);
+    refundsValue.font = Font.boldSystemFont(VALUE_FONT_SIZE);
 }
 
 async function getBalance() {
@@ -116,9 +116,12 @@ async function getBalance() {
 
     const json = await request.loadJSON();
 
-    const amount = (json.pending[0].amount ?? 0) / 100;
-    const currency = json.pending[0].currency ?? "usd";
+    if (json.error?.message) {
+        throw new Error(json.error.message);
+    }
 
+    const amount = (json.pending?.[0]?.amount ?? 0) / 100;
+    const currency = json.pending?.[0]?.currency ?? "usd";
     return {
         amount: amount,
         currency: mapCurrency[currency]
@@ -132,7 +135,11 @@ async function getCustomers() {
 
     const json = await request.loadJSON();
 
-    return json.data.length ?? 0;
+    if (json.error?.message) {
+        throw new Error(json.error.message);
+    }
+
+    return json.data?.length ?? 0;
 }
 
 async function getRefunds() {
@@ -142,5 +149,9 @@ async function getRefunds() {
 
     const json = await request.loadJSON();
 
-    return json.data.length ?? 0;
+    if (json.error?.message) {
+        throw new Error(json.error.message);
+    }
+
+    return json.data?.length ?? 0;
 }
