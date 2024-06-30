@@ -20,7 +20,7 @@ A widget that allows you to monitor the balance and other metrics of your Stripe
 
 - Install [Scriptable](https://apps.apple.com/us/app/scriptable/id1405459188) app 
 
-- Create new script in Scriptable app and paste code from [smallWidger.js](/src/smallWidget.js)
+- Create new script in Scriptable app and paste code from [smallWidget.js](/src/smallWidget.js)
 
 - Edit RESTRICTED_KEY to insert your key.
 
